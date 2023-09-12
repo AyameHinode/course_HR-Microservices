@@ -1,5 +1,6 @@
 package com.repliforce.hrpayroll.resources;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.repliforce.hrpayroll.entities.Payment;
 import com.repliforce.hrpayroll.servces.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,19 @@ public class PaymentResource {
     @Autowired
     private PaymentService paymentService;
 
+    @HystrixCommand(fallbackMethod = "getPaymentAlternative")
     @GetMapping(value = "/{workerId}/days/{days}")
     public ResponseEntity<Payment> getPayment(
             @PathVariable long workerId, @PathVariable Integer days){
         Payment payment = paymentService.getPayment(workerId, days);
         return  ResponseEntity.ok(payment);
+    }
+
+    public ResponseEntity<Payment>getPaymentAlternative(long workerID, Integer days){
+
+        Payment payment = new Payment("Sigma", 1000.0, days);
+        return ResponseEntity.ok(payment);
+
     }
 
 }
