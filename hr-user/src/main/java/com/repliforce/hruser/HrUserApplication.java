@@ -24,6 +24,6 @@ public class HrUserApplication implements CommandLineRunner {
 	//Do implements Command Line Runner para o BCript nesse caso
 	@Override
 	public void run(String... args) throws Exception {
-		//System.out.println("BCRIPT = " + passwordEncoder.encode("password"));
+		System.out.println("BCRIPT = " + passwordEncoder.encode("gerador de BCript"));
 	}
 }
