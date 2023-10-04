@@ -26,7 +26,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     private JwtTokenStore tokenStore;
 
     private static final String[] PUBLIC = {"/hr-oauth/oauth/token"};
-    private static final String[] RECRUIT = {"/hr-worker/**"};
+    private static final String[] RECRUIT = {"/hr-workers/**"};
     private static final String[] LEADER = {"/hr-payroll/**", "/hr-user/**", "/actuator/refresh", "/hr-oauth/actuator/**"};
 
     @Override

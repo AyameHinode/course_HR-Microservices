@@ -4,6 +4,6 @@ INSERT INTO tb_user (name, email, password) VALUES ('Zero', 'zero@gmail.com', '$
 INSERT INTO tb_role (role_name) VALUES ('ROLE_LEADER');
 INSERT INTO tb_role (role_name) VALUES ('`ROLE_RECRUIT');
 
-INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 1);
+INSERT INTO tb_user_role (user_id, role_id) VALUES (1, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
