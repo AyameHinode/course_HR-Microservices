@@ -23,9 +23,6 @@ public class WorkerResource {
 
     private static Logger printLogger = LoggerFactory.getLogger(WorkerResource.class);
 
-    @Value("${test.config}")
-    private String testConfig;
-
     @Autowired
     private Environment enviroment;
 
@@ -37,7 +34,7 @@ public class WorkerResource {
 
     @GetMapping(value = "/configs")
     public ResponseEntity<Void> getConfigs(){
-        printLogger.info("CONFIG = " + testConfig);
+        //printLogger.info("CONFIG = " + testConfig);
         return ResponseEntity.noContent().build();
     }
 

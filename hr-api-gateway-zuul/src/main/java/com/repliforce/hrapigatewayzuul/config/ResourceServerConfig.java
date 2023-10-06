@@ -27,7 +27,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     private static final String[] PUBLIC = {"/hr-oauth/oauth/token"};
     private static final String[] RECRUIT = {"/hr-workers/**"};
-    private static final String[] LEADER = {"/hr-payroll/**", "/hr-user/**", "/actuator/refresh", "/hr-oauth/actuator/**"};
+    private static final String[] LEADER = {"/hr-payroll/**", "/hr-users/**", "/actuator/refresh", "/hr-oauth/actuator/**"};
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

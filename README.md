@@ -1,16 +1,16 @@
 # Criando e testando containers Docker
 
-# Criar rede docker para sistema hr
+## Criar rede docker para sistema hr
 docker network create hr-net
 
-# Testando perfil dev com Postgresql no Docker
+## Testando perfil dev com Postgresql no Docker
 docker pull postgres12-alpine
 
 docker run -p 54325432 --name hr-worker-pg12 --network hr-net -e POSTGRES_PASSWORD=1234567 -e POSTGRES_DB=db_hr_worker postgres12-alpine
 
 docker run -p 54325432 --name hr-user-pg12 --network hr-net -e POSTGRES_PASSWORD=1234567 -e POSTGRES_DB=db_hr_user postgres12-alpine
 
-# hr-config-server
+## hr-config-server
 FROM openjdk11
 VOLUME tmp
 EXPOSE 8888
@@ -22,7 +22,7 @@ docker build -t hr-config-serverv1 .
 
 docker run -p 88888888 --name hr-config-server --network hr-net -e GITHUB_USER=acenelio -e GITHUB_PASS= hr-config-serverv1
 
-# hr-eureka-server
+## hr-eureka-server
 FROM openjdk11
 VOLUME tmp
 EXPOSE 8761
@@ -34,7 +34,7 @@ docker build -t hr-eureka-serverv1 .
 
 docker run -p 87618761 --name hr-eureka-server --network hr-net hr-eureka-serverv1
 
-# hr-worker
+## hr-worker
 FROM openjdk11
 VOLUME tmp
 ADD .targethr-worker-0.0.1-SNAPSHOT.jar hr-worker.jar
@@ -45,7 +45,7 @@ docker build -t hr-workerv1 .
 
 docker run -P --network hr-net hr-workerv1
 
-# hr-user
+## hr-user
 FROM openjdk11
 VOLUME tmp
 ADD .targethr-user-0.0.1-SNAPSHOT.jar hr-user.jar
@@ -56,7 +56,7 @@ docker build -t hr-userv1 .
 
 docker run -P --network hr-net hr-userv1
 
-# hr-payroll
+## hr-payroll
 FROM openjdk11
 VOLUME tmp
 ADD .targethr-payroll-0.0.1-SNAPSHOT.jar hr-payroll.jar
@@ -67,7 +67,7 @@ docker build -t hr-payrollv1 .
 
 docker run -P --network hr-net hr-payrollv1
 
-# hr-oauth
+## hr-oauth
 FROM openjdk11
 VOLUME tmp
 ADD .targethr-oauth-0.0.1-SNAPSHOT.jar hr-oauth.jar
@@ -78,7 +78,7 @@ docker build -t hr-oauthv1 .
 
 docker run -P --network hr-net hr-oauthv1
 
-# hr-api-gateway-zuul
+## hr-api-gateway-zuul
 FROM openjdk11
 VOLUME tmp
 EXPOSE 8765
@@ -90,7 +90,7 @@ docker build -t hr-api-gateway-zuulv1 .
 
 docker run -p 87658765 --name hr-api-gateway-zuul --network hr-net hr-api-gateway-zuulv1
 
-# Alguns comandos Docker
+## Alguns comandos Docker
 Criar uma rede Docker
 
 docker network create nome-da-rede
